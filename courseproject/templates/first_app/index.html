@@ -10,6 +10,26 @@
 <body>
     <em>{{title}}</em>
     <p>This is a Django template</p>
-    <img src="{% static "images/image.png" %}" alt="image" />
+    <img src="{% static "images/image.png" %}" alt="image" style="max-width: 200px" />
+
+    <h1>Here are your access records</h1>
+    {% if access_records %}
+    <table>
+        <thead>
+            <th>Site Name</th>
+            <th>Date Accessed</th>
+        </thead>
+        <tbody>
+            {% for acc in access_records %}
+            <tr>
+                <td>{{acc.name}}</td>
+                <td>{{acc.date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>NO ACCESS RECORDS FOUND!</p>
+    {% endif %}
 </body>
 </html>
